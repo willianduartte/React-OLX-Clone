@@ -87,6 +87,37 @@ export const PageArea = styled.div`
       margin-top: 10px;
     }
   }
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+
+    .leftSide {
+      margin-right: 0;
+      .box {
+        width: 320px;
+        flex-direction: column;
+        margin: auto;
+      }
+
+      .adInfo {
+        padding: 10px;
+      }
+    }
+
+    .rightSide {
+      width: 100%;
+      margin-top: 20px;
+      .box {
+        width: 320px;
+        margin: auto;
+      }
+
+      .contactSellerLink {
+        width: 320px;
+        margin: 20px auto;
+      }
+    }
+  }
 `
 
 export const OthersArea = styled.div`
@@ -99,6 +130,14 @@ export const OthersArea = styled.div`
 
     .adItem {
       width: 25%;
+    }
+  }
+
+  @media (max-width: 700px) {
+    margin: 10px;
+
+    .list .adItem {
+      width: 100%;
     }
   }
 `
@@ -115,5 +154,9 @@ export const BreadChumb = styled.div`
     &:hover {
       color: #6e0ad6;
     }
+  }
+
+  @media (max-width: 800px) {
+    margin: 20px;
   }
 `

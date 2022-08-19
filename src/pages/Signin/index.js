@@ -70,11 +70,14 @@ export const Signin = () => {
             <div className="area--title">Lembrar Senha</div>
             <div className="area--checkbox">
               <input
+                id="toggle"
+                className="toggle"
                 type="checkbox"
                 disabled={disabled}
                 checked={rememberPassword}
                 onChange={() => setRememberPassword(!rememberPassword)}
               />
+              <label for="toggle"></label>
             </div>
           </label>
           <label className="area">

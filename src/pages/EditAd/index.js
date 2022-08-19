@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import MaskedInput from 'react-text-mask'
 import { createNumberMask } from 'text-mask-addons'
 import {
@@ -11,17 +11,20 @@ import { PageArea } from './styled'
 
 import useApi from '../../helpers/OlxApi'
 
-export const AddAd = () => {
+export const EditAd = () => {
   const api = useApi()
 
   const fileField = useRef()
   const navigate = useNavigate()
+
+  const { id } = useParams()
 
   const [title, setTitle] = useState('')
   const [categories, setCategories] = useState([])
   const [category, setCategory] = useState('')
   const [price, setPrice] = useState('')
   const [priceNegotiable, setPriceNegotiable] = useState(false)
+  const [status, setStatus] = useState(true)
   const [desc, setDesc] = useState('')
   const [disabled, setDisable] = useState(false)
   const [error, setError] = useState('')
@@ -38,38 +41,33 @@ export const AddAd = () => {
     e.preventDefault()
     setDisable(true)
     setError('')
-    let errors = []
 
-    if (!title.trim()) {
-      errors.push('Sem título')
-    }
-    if (!category) {
-      errors.push('Sem categoria')
-    }
-    if (errors.length === 0) {
-      const fData = new FormData()
-      fData.append('title', title)
-      fData.append('price', price)
-      fData.append('priceneg', priceNegotiable)
-      fData.append('desc', desc)
-      fData.append('cat', category)
+    const fData = new FormData()
+    fData.append('title', title)
+    fData.append('price', price)
+    fData.append('priceneg', priceNegotiable)
+    fData.append('status', status)
+    fData.append('desc', desc)
+    fData.append('cat', category)
 
-      if (fileField.current.files.length > 0) {
-        for (let i = 0; i < fileField.current.files.length; i++) {
-          fData.append('img', fileField.current.files[i])
-        }
+    if (fileField.current.files.length > 0) {
+      for (let i = 0; i < fileField.current.files.length; i++) {
+        fData.append('img', fileField.current.files[i])
       }
+    }
 
-      const json = await api.addAd(fData)
+    const json = await api.userAdEdit(id, fData)
 
-      if (!json.error) {
-        navigate(`/ad/${json.id}`)
-        return
-      } else {
-        setError(json.error)
-      }
+    if (!status) {
+      navigate(`/my-account`)
+      return
+    }
+
+    if (!json.error) {
+      navigate(`/ad/${id}`)
+      return
     } else {
-      setError(errors.join('\n'))
+      setError(json.error)
     }
 
     setDisable(false)
@@ -85,7 +83,7 @@ export const AddAd = () => {
 
   return (
     <PageContainer>
-      <PageTitle>Postar Anúncio</PageTitle>
+      <PageTitle>Editar Anúncio</PageTitle>
       <PageArea>
         {error && <ErrorMensage>{error}</ErrorMensage>}
 
@@ -98,7 +96,6 @@ export const AddAd = () => {
                 disabled={disabled}
                 value={title}
                 onChange={e => setTitle(e.target.value)}
-                required
               />
             </div>
           </label>
@@ -108,12 +105,11 @@ export const AddAd = () => {
               <select
                 disabled={disabled}
                 onChange={e => setCategory(e.target.value)}
-                required
               >
                 <option></option>
                 {categories &&
                   categories.map(i => (
-                    <option key={i._id} value={i._id}>
+                    <option key={i._id} value={i.slug}>
                       {i.name}
                     </option>
                   ))}
@@ -147,32 +143,41 @@ export const AddAd = () => {
             </div>
           </label>
           <label className="area">
+            <div className="area--title">Produto já vendido</div>
+            <div className="area--checkbox">
+              <input
+                id="toggle2"
+                className="toggle"
+                type="checkbox"
+                disabled={disabled}
+                checked={!status}
+                onChange={e => setStatus(!status)}
+              />
+              <label for="toggle2"></label>
+            </div>
+          </label>
+          <label className="area">
             <div className="area--title">Descrição</div>
             <div className="area--input">
               <textarea
                 disabled={disabled}
                 value={desc}
                 onChange={e => setDesc(e.target.value)}
-                required
               ></textarea>
             </div>
           </label>
           <label className="area">
-            <div className="area--title">Imagens (1 ou mais)</div>
+            <div className="area--title">
+              Imagens (Imagens antigas serão substituídas)
+            </div>
             <div className="area--input">
-              <input
-                type="file"
-                disabled={disabled}
-                ref={fileField}
-                multiple
-                required
-              />
+              <input type="file" disabled={disabled} ref={fileField} multiple />
             </div>
           </label>
           <label className="area">
             <div className="area--title"></div>
             <div className="area--input">
-              <button disabled={disabled}>Adicionar Anúncio</button>
+              <button disabled={disabled}>Editar Anúncio</button>
             </div>
           </label>
         </form>

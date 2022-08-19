@@ -52,6 +52,7 @@ export const Home = () => {
                 placeholder="Estou procurando por..."
               />
               <select name="state">
+                <option></option>
                 {stateList.map((i, index) => (
                   <option key={index} value={i.name}>
                     {i.name}

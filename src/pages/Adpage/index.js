@@ -22,7 +22,7 @@ export const AdPage = () => {
       setLoading(false)
     }
     getAdInfo(id)
-  }, [])
+  }, [id])
 
   const formateDate = date => {
     let cDate = new Date(date)
@@ -126,7 +126,7 @@ export const AdPage = () => {
       <OthersArea>
         {adInfo.others && (
           <>
-            <h2>Outras ofertas</h2>
+            <h2>Outras ofertas de {adInfo.userInfo.name}</h2>
             <div className="list">
               {adInfo.others.map((i, index) => (
                 <AdItem key={index} data={i} />

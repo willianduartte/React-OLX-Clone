@@ -140,6 +140,12 @@ export const Ads = () => {
             </select>
             <div className="filterName">Categoria:</div>
             <ul>
+              <li
+                onClick={() => setCat('')}
+                className={cat == '' ? 'categoryItem active' : 'categoryItem'}
+              >
+                <span>Todos</span>
+              </li>
               {categories.map((i, index) => (
                 <li
                   key={index}

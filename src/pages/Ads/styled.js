@@ -68,13 +68,12 @@ export const PageArea = styled.div`
       padding: 30px;
       text-align: center;
     }
-
-    .list {
-      display: flex;
-      flex-wrap: wrap;
-      .adItem {
-        width: 33%;
-      }
+  }
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    .adItem {
+      width: 33%;
     }
   }
 
@@ -103,6 +102,30 @@ export const PageArea = styled.div`
       &.active {
         background-color: #666655;
         color: #fff;
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    .leftSide {
+      width: auto;
+      margin: 10px;
+
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+          width: 50%;
+        }
+      }
+    }
+    .rightSide {
+      margin: 10px;
+
+      .list .adItem {
+        width: 50%;
       }
     }
   }

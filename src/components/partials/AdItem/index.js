@@ -9,17 +9,66 @@ const AdItem = props => {
     price = 'Preço Negociável'
   } else {
     price = `R$ ${props.data.price}`
+    console.log(props.data)
   }
 
   return (
     <Item className="adItem">
-      <Link to={`/ad/${props.data.id}`}>
-        <div className="itemImage">
-          <img src={props.data.image} alt="Erro ao carregar a imagem" />
-        </div>
-        <div className="itemName">{props.data.title}</div>
-        <div className="itemPrice">{price}</div>
-      </Link>
+      {props.data.id && (
+        <Link to={`/ad/${props.data.id}`}>
+          <div className="itemImage">
+            <img src={props.data.image} alt="Erro ao carregar a imagem" />
+          </div>
+          <div className="itemName">{props.data.title}</div>
+          <div className="itemPrice">{price}</div>
+        </Link>
+      )}
+      {props.data.status === 'false' && props.data._id && (
+        <Link className="disable" to={`/editAd/${props.data._id}`}>
+          <div className="itemImage">
+            {props.data.images && (
+              <img
+                src={`https://node-olx-api.herokuapp.com/media/${props.data.images[0].url}`}
+                alt="Erro ao carregar a imagem"
+              />
+            )}
+          </div>
+          <div className="itemInfo">
+            <div>
+              <div className="itemName">Anúncio inativo</div>
+              <div className="itemPrice"></div>
+            </div>
+            <div>
+              <Link to={`/editAd/${props.data._id}`} className="edit">
+                Editar
+              </Link>
+            </div>
+          </div>
+        </Link>
+      )}
+      {props.data.status === 'true' && props.data._id && (
+        <Link to={`/ad/${props.data._id}`}>
+          <div className="itemImage">
+            {props.data.images && (
+              <img
+                src={`https://node-olx-api.herokuapp.com/media/${props.data.images[0].url}`}
+                alt="Erro ao carregar a imagem"
+              />
+            )}
+          </div>
+          <div className="itemInfo">
+            <div>
+              <div className="itemName">{props.data.title}</div>
+              <div className="itemPrice">{price}</div>
+            </div>
+            <div>
+              <Link to={`/editAd/${props.data._id}`} className="edit">
+                Editar
+              </Link>
+            </div>
+          </div>
+        </Link>
+      )}
     </Item>
   )
 }

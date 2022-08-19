@@ -16,7 +16,7 @@ export const PageArea = styled.div`
       .area--title {
         width: 200px;
         text-align: right;
-        padding-right: 20px;
+        padding-right: 10px;
         font-size: 14px;
         font-weight: bold;
       }
@@ -63,43 +63,43 @@ export const PageArea = styled.div`
           opacity: 0.8;
         }
       }
-      .toggle {
-        display: none;
-      }
-      .toggle + label {
-        width: 40px;
-        height: 25px;
-        background: lightgrey;
-        display: block;
-        position: relative;
-        border-radius: 20px;
-        padding: 2px;
-        transition: 200ms;
-        cursor: pointer;
-      }
-      .toggle + label:before {
-        content: '';
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        background-color: white;
-        display: block;
-        border-radius: 50%;
-        right: unset;
-        left: 2px;
-        top: 2px;
-        transition: 200ms;
-      }
+    }
+    .toggle {
+      display: none;
+    }
+    .toggle + label {
+      width: 40px;
+      height: 25px;
+      background: lightgrey;
+      display: block;
+      position: relative;
+      border-radius: 20px;
+      padding: 2px;
+      transition: 200ms;
+      cursor: pointer;
+    }
+    .toggle + label:before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      display: block;
+      border-radius: 50%;
+      right: unset;
+      left: 2px;
+      top: 2px;
+      transition: 200ms;
+    }
 
-      .toggle:checked + label {
-        background: #4dd964;
-      }
+    .toggle:checked + label {
+      background: #4dd964;
+    }
 
-      .toggle:checked + label:before {
-        content: '';
-        left: calc(100% - 22px);
-        box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
-      }
+    .toggle:checked + label:before {
+      content: '';
+      left: calc(100% - 22px);
+      box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
     }
   }
 
@@ -122,7 +122,7 @@ export const PageArea = styled.div`
           }
         }
         .area--checkbox {
-          margin-left: -440px;
+          width: 100%;
         }
       }
     }
