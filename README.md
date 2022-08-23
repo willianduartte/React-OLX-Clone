@@ -2,7 +2,7 @@
 
 <h4 align='center'>Projeto mais completo até agora com direito a próprio back-end em Nodejs e diversas outras funcionalidades, feito durante o curso de React da <a href="https://b7web.com.br/fullstack/?ref=I24108426I&gclid=CjwKCAjw7cGUBhA9EiwArBAvog9V2u1XVk1CgL7W_bHZl67ys9p6bTy_bw-kusqWhM6TWdrs7HrMuBoCVkkQAvD_BwE" target="_blank" >B7web</a></h4>
 <h2 align='center'>ATENÇÃO</h2>
-<h5 align='center'>(imagens podem sumir depois de um tempo por conta do projeto ainda não ter onde hospedar elas de forma permanente, mas já estou trabalhando nisso)</h5>
+<h5 align='center'>Imagens podem sumir depois de um tempo por conta do projeto ainda não ter onde hospedar elas de forma permanente, mas já estou trabalhando nisso</h5>
 
 <p align='center'>
     <a href="#tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
