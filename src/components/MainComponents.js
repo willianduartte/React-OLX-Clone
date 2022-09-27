@@ -8,6 +8,7 @@ export const PageContainer = styled.div`
 
   @media (max-width: 700px) {
     max-width: 100%;
+    padding: 10px;
   }
 `
 

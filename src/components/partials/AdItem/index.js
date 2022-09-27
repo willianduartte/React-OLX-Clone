@@ -9,7 +9,6 @@ const AdItem = props => {
     price = 'Preço Negociável'
   } else {
     price = `R$ ${props.data.price}`
-    console.log(props.data)
   }
 
   return (
@@ -28,7 +27,7 @@ const AdItem = props => {
           <div className="itemImage">
             {props.data.images && (
               <img
-                src={`https://node-olx-api.herokuapp.com/media/${props.data.images[0].url}`}
+                src={`${props.data.images[0].awsUrl}`}
                 alt="Erro ao carregar a imagem"
               />
             )}
@@ -51,7 +50,7 @@ const AdItem = props => {
           <div className="itemImage">
             {props.data.images && (
               <img
-                src={`https://node-olx-api.herokuapp.com/media/${props.data.images[0].url}`}
+                src={`${props.data.images[0].awsUrl}`}
                 alt="Erro ao carregar a imagem"
               />
             )}

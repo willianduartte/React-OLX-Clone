@@ -122,7 +122,7 @@ export const PageArea = styled.div`
           }
         }
         .area--checkbox {
-          margin-left: -440px;
+          width: 100%;
         }
       }
     }
