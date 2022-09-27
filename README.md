@@ -19,6 +19,7 @@ As seguintes tecnologias foram usadas:
 
 - React
 - Node [API](https://github.com/willianduartte/Node-olx-api)
+- amazon web services (aws) S3
 - Javascript
 - HTML5
 - Styled Components (CSS)
