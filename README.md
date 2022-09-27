@@ -7,7 +7,7 @@
     <a href="#como-usar">Como usar</a>
 </p>
 
-<img src="">
+<img src="Olx.png">
 
 <h1 align='center'>
     <a href="https://react-clone-da-olx.vercel.app/">Clique aqui para Testar o app</a>
